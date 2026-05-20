@@ -32,7 +32,10 @@ Si solo escribes `schedule(static)`, OpenMP divide el número total de iteracion
 
 * **Ejemplo:** Si tienes 100 iteraciones y 4 hilos, OpenMP asignará las iteraciones 0 a 24 al Hilo 0, de la 25 a la 49 al Hilo 1, y así sucesivamente.
 
-
+| t | t |
+|---|---|
+| 3 | 2 |
+| 4 | 4 |
 ---
 ## Schedule Dynamic
 
