@@ -56,5 +56,7 @@ Hilo 0 vuelve a tomar de la 20-29, y así sucesivamente.
 
 ---
 ## Referencias
+- TylerMSFT. (s. f.). D. Cláusula de programación. Microsoft Learn. https://learn.microsoft.com/es-es/cpp/parallel/openmp/d-using-the-schedule-clause?view=msvc-170
+- Lücks. (2012, 1 junio). What’s the difference between «static» and «dynamic» schedule in OpenMP? Stack Overflow. https://stackoverflow.com/questions/10850155/whats-the-difference-between-static-and-dynamic-schedule-in-openmp
 
 ---
