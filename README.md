@@ -40,7 +40,7 @@ Hilo 0 vuelve a tomar de la $20$-$29$, y así sucesivamente.
 
 | Característica | schedule(static) |
 |----------------------------|---------------------|
-| Costo de gestión (Overhead | Muy bajo. Como la división matemática se hace al principio, los hilos no pierden tiempo comunicándose entre sí para pedir más trabajo. Simplemente toman la parte que les tocó. |
+| Caso de uso ideal | Cuando todas las iteraciones del bucle realizan exactamente la misma cantidad de trabajo y toman el mismo tiempo (por ejemplo, sumar elementos de dos arreglos gigantes).|
 | 4 | 4 |
 ---
 ## Schedule Dynamic
