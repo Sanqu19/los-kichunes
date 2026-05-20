@@ -10,3 +10,25 @@ Alumnos:
 entender cómo OpenMP reparte las iteraciones de un parallel for entre los hilos, y por qué la decisión afecta el rendimiento.
 
 ---
+
+## Descripción
+
+---
+## Schedule Static
+
+
+---
+## Schedule Dynamic
+
+
+---
+## Schedule Guided
+
+---
+## Conclusion
+
+
+---
+## Referencias
+
+---
