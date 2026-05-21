@@ -44,6 +44,8 @@ Hilo 0 vuelve a tomar de la 20-29, y así sucesivamente.
 | Caso de uso ideal | Cuando todas las iteraciones del bucle realizan exactamente la misma cantidad de trabajo y toman el mismo tiempo (por ejemplo, sumar elementos de dos arreglos gigantes).|
 | Balance de carga | Malo si el trabajo es irregular. Si algunas iteraciones tardan mucho más en procesarse que otras, un hilo podría terminar su parte rápido y quedarse inactivo (idle), desperdiciando recursos mientras espera a que los demás terminen su asignación fija |
 |Costo de gestión (Overhead)| Muy bajo. Como la división matemática se hace al principio, los hilos no pierden tiempo comunicándose entre sí para pedir más trabajo. Simplemente toman la parte que les tocó.|
+<img width="353" height="459" alt="image" src="https://github.com/user-attachments/assets/124a6acb-a0d2-48d6-83f7-7734aa264616" />
+
 ---
 ## Schedule Dynamic
 
