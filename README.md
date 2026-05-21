@@ -47,6 +47,19 @@ Hilo 0 vuelve a tomar de la 20-29, y así sucesivamente.
 ---
 ## Schedule Dynamic
 
+### Funcionamiento de Schedule Dynamic
+
+La cláusula schedule(dynamic) en OpenMP controla cómo se distribuyen las iteraciones de un bucle paralelo entre los hilos de ejecución (threads), realizando esta asignación sobre la marcha durante el tiempo de ejecución.
+
+Imagina un bucle donde algunas iteraciones son baratas y otras caras. Con , un hilo puede quedarse atascado con muchas iteraciones pesadas mientras otros terminan pronto y se quedan inactivos. Con , los hilos de reposo pueden agarrar los trozos restantes y mantener la máquina ocupada.
+
+### Balanceo de carga
+
+El balanceo de carga, es muy eficiente para dynamic, ya que garantiza que cada hilo se mantenga ocupado, independientemente que tantas interaciones deben de realizar. Por ejemplo si un hilo tiene una gran catidad de iteraciones procesaran menos y las que tienen menos iteraciones procesaran una mayor cantidad, haciendo que no se desperdicie tiempo.
+
+### Overhead
+
+Debido a que requiere una sincrinizacion constante, esto hacer que el Overhead aumente, ya que cada 
 
 ---
 ## Schedule Guided
