@@ -101,6 +101,13 @@ Ejemplo: Con schedule(guided, 5) y 100 iteraciones, los bloques se reducirán pr
 ---
 ## Conclusion
 
+Para schedule, como la gran mayoria de los problemas depende de para que lo utilices va a tener una solución más eficiente siendo que cada uno (static, dynamic y guied) brillen.
+
+Sabiendo esto, si requieres uniformidad static es el ideal, debido a que requiere que el tiempo de ejecución o carga de trabajo de cada hilo sea constante en otras palabras, es mucho más útil cuando las iteraciones de un proceso hacen la misma cantidad de tareas.
+
+Schedule dynamic se recomienda al tener iteraciones con costos irregulares, aunque su balance de carga es óptimo su overhead es muy alto, en este caso el tamaño de bloque es fijo 
+
+Schedule guied, se recomienda cuando el trabajo es desigual entre las iteraciones, su balance de carga es mejor que el estático en los trabajos irregulares, mientras que su overhead es medio, la gran ventaja que tiene es que el tamaño del bloque disminuye exponencialmente mientras avanza el bucle
 
 ---
 ## Referencias
