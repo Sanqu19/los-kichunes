@@ -84,6 +84,9 @@ Ejemplo: Con schedule(guided, 5) y 100 iteraciones, los bloques se reducirán pr
 | Caso de uso ideal | Cuando el trabajo por iteración es desigual o impredecible, pero hay tantas iteraciones que usar dynamic generaría demasiada lentitud por la administración (overhead).|
 | Balance de carga | 	Mejor que static para trabajo irregular. Los bloques grandes al inicio reducen el overhead de sincronización, y los bloques pequeños al final permiten un balance fino entre hilos. |
 |Costo de gestión (Overhead)| Medio. Es más alto que el estático (porque hay que calcular y asignar sobre la marcha), pero mucho menor que el dinámico (porque se hacen muchas menos entregas gracias a los bloques grandes del inicio).|
+
+<img width="447" height="642" alt="image" src="https://github.com/user-attachments/assets/e45c93bc-6c6f-4b92-9928-d1486f169b22" />
+
 ---
 ## Conclusion
 
