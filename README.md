@@ -70,6 +70,10 @@ Debido a que requiere una sincrinizacion constante, esto hacer que el Overhead a
 |Caso de uso ideal| Iteraciones con costo muy irregular o impredecible (ray tracing, simulaciones con condicionales costosos, procesamiento de grafos)|
 | Balance de carga | Óptimo — los hilos libres toman trabajo inmediatamente; la carga se equilibra de forma continua |
 | Costo de gestion (overhead) | Alto — cada petición de chunk requiere una operación atómica sobre la cola compartida (~50–200 ns por petición) |
+
+<img width="323" height="534" alt="image" src="https://github.com/user-attachments/assets/2f14ac6d-8504-403d-bc6e-51396f9a63c8" />
+
+
 ---
 ## Schedule Guided
 La planificación guiada es dinámica, pero a diferencia de dynamic (donde el tamaño del bloque es siempre fijo), en guided el tamaño del bloque disminuye de forma exponencial conforme avanza el bucle.
