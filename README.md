@@ -61,8 +61,15 @@ El balanceo de carga, es muy eficiente para dynamic, ya que garantiza que cada h
 
 ### Overhead
 
-Debido a que requiere una sincrinizacion constante, esto hacer que el Overhead aumente, ya que cada 
+Debido a que requiere una sincrinizacion constante, esto hacer que el Overhead aumente, cuando el numero de hilos es mayor que la cantidad de chunks el overhead sera grande debido a que tiene esto satura pidiendo más tareas constantemente.
 
+### En resumen
+
+| Caracteristica | Schedule Dynamic |
+|----------------|------------------|
+|Caso de uso ideal| Iteraciones con costo muy irregular o impredecible (ray tracing, simulaciones con condicionales costosos, procesamiento de grafos)|
+| Balance de carga | Óptimo — los hilos libres toman trabajo inmediatamente; la carga se equilibra de forma continua |
+| Costo de gestion (overhead) | Alto — cada petición de chunk requiere una operación atómica sobre la cola compartida (~50–200 ns por petición) |
 ---
 ## Schedule Guided
 La planificación guiada es dinámica, pero a diferencia de dynamic (donde el tamaño del bloque es siempre fijo), en guided el tamaño del bloque disminuye de forma exponencial conforme avanza el bucle.
@@ -97,5 +104,7 @@ Ejemplo: Con schedule(guided, 5) y 100 iteraciones, los bloques se reducirán pr
 - Lücks. (2012, 1 junio). What’s the difference between «static» and «dynamic» schedule in OpenMP? Stack Overflow. https://stackoverflow.com/questions/10850155/whats-the-difference-between-static-and-dynamic-schedule-in-openmp
 - CRONOGRAMA. (s.f.). Schedule https://www.cenapad.unicamp.br/parque/manuais/Xlf/lr218.HTM
 - OpenMP - Programación (estática, dinámica, guiada, en tiempo de ejecución, automática) - Zona tecnológica de Yiling. (2020, July 15). https://610yilingliu.github.io/2020/07/15/ScheduleinOpenMP/
-
+- OpenMP Scheduling. (s.f.). Ian Finlayson. https://ianfinlayson.net/class/cpsc425/notes/12-scheduling
+- Yiling. (2020, 15 de julio). OpenMP - Scheduling(static, dynamic, guided, runtime, auto) - Yiling's Tech Zone | 风逝无殇的瞎逼逼基地. Yiling's Tech Zone | 风逝无殇的瞎逼逼基地. https://610yilingliu.github.io/2020/07/15/ScheduleinOpenMP/
+- Sobral, J. B. M. (s.f.). OpenMP Scheduling [Archivo PDF]. Universidade Federal de Santa Catarina. http://www.inf.ufsc.br/~bosco/ensino/ine5645/OpenMP_Dynamic_Scheduling.pdf
 ---
