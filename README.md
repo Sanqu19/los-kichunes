@@ -12,14 +12,15 @@ entender cómo OpenMP reparte las iteraciones de un parallel for entre los hilos
 ---
 
 ## Descripción
-
----
-### Schedule Static
 ### El Contexto: ¿Por qué necesitamos un "Schedule"?
 
 Cuando paralelices un bucle usando la directiva `#pragma omp for`, OpenMP necesita saber qué hilo ejecutará qué iteraciones. Si tienes un bucle de 100 iteraciones y 4 hilos de procesamiento, no puedes dejar que todos hagan todo. Necesitas dividirlos. 
 
 Aquí es donde entra el *scheduling* (planificación). Las dos estrategias principales son **estática** y **dinámica**, y la elección depende completamente de la naturaleza del trabajo dentro de tu bucle.
+
+---
+### Schedule Static
+
 
 ### La Teoría detrás de `schedule(static)`
 
