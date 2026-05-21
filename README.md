@@ -50,7 +50,25 @@ Hilo 0 vuelve a tomar de la 20-29, y así sucesivamente.
 
 ---
 ## Schedule Guided
+La planificación guiada es dinámica, pero a diferencia de dynamic (donde el tamaño del bloque es siempre fijo), en guided el tamaño del bloque disminuye de forma exponencial conforme avanza el bucle.
 
+Comienza repartiendo pedazos muy grandes de iteraciones. Con esto, se ahorra mucho tiempo de comunicación entre los hilos y el planificador. A medida que quedan menos iteraciones por procesar, los bloques que reparte se vuelven cada vez más pequeños. Esto asegura que al final del bucle, cuando los hilos están por terminar, no haya un hilo atascado con un bloque gigante mientras los demás están inactivos.
+
+Funciona de la siguiente manera, dependiendo del parámetro chunk size (tamaño de bloque mínimo):
+
+ 1. Guiado sin chunk size (por defecto): Si solo escribes schedule(guided), OpenMP calcula el tamaño de los bloques dividiendo las iteraciones restantes entre el número total de hilos. El tamaño del bloque irá disminuyendo hasta llegar a 1 (el mínimo por defecto).
+
+Ejemplo: Con 100 iteraciones y 4 hilos, el Hilo 0 podría recibir las primeras 25 iteraciones, luego el Hilo 1 recibe 19, el Hilo 2 recibe 14... y así progresivamente hasta agotar las iteraciones.
+ 
+ 2. Guiado con chunk size: Si usas schedule(guided, n), OpenMP hace la misma división, pero garantiza que el bloque nunca será menor que n (excepto, posiblemente, en el último bloque si quedan menos de n iteraciones).
+
+Ejemplo: Con schedule(guided, 5) y 100 iteraciones, los bloques se reducirán progresivamente pero nunca bajarán de 5 iteraciones por asignación.
+
+| Característica | schedule(guided) |
+|----------------------------|---------------------|
+| Caso de uso ideal | Cuando el trabajo por iteración es desigual o impredecible, pero hay tantas iteraciones que usar dynamic generaría demasiada lentitud por la administración (overhead).|
+| Balance de carga | 	Mejor que static para trabajo irregular. Los bloques grandes al inicio reducen el overhead de sincronización, y los bloques pequeños al final permiten un balance fino entre hilos. |
+|Costo de gestión (Overhead)| Medio. Es más alto que el estático (porque hay que calcular y asignar sobre la marcha), pero mucho menor que el dinámico (porque se hacen muchas menos entregas gracias a los bloques grandes del inicio).|
 ---
 ## Conclusion
 
@@ -59,5 +77,7 @@ Hilo 0 vuelve a tomar de la 20-29, y así sucesivamente.
 ## Referencias
 - TylerMSFT. (s. f.). D. Cláusula de programación. Microsoft Learn. https://learn.microsoft.com/es-es/cpp/parallel/openmp/d-using-the-schedule-clause?view=msvc-170
 - Lücks. (2012, 1 junio). What’s the difference between «static» and «dynamic» schedule in OpenMP? Stack Overflow. https://stackoverflow.com/questions/10850155/whats-the-difference-between-static-and-dynamic-schedule-in-openmp
+- CRONOGRAMA. (s.f.). Schedule https://www.cenapad.unicamp.br/parque/manuais/Xlf/lr218.HTM
+- OpenMP - Programación (estática, dinámica, guiada, en tiempo de ejecución, automática) - Zona tecnológica de Yiling. (2020, July 15). https://610yilingliu.github.io/2020/07/15/ScheduleinOpenMP/
 
 ---
